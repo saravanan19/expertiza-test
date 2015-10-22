@@ -28,7 +28,7 @@ class StudentTaskControllerTest < ActionController::TestCase
     @request.session[:user] = User.find(users(:student1).id)
     user = User.find(users(:student1).id)
     if @request.session[:user].is_new_user = true
-      post :list, { :id => users(:student1).id }
+      post :index, { :id => users(:student1).id }
       assert_redirected_to  'eula/display'
     end
   end
@@ -225,7 +225,7 @@ class StudentTaskControllerTest < ActionController::TestCase
   def test_valid_newstudent_student_list
     @request.session[:user] = User.find(users(:student2).id)
     @participant = AssignmentParticipant.find(participants(:par2).id)
-    get :list
+    get :index
     assert_redirected_to "/eula/display"
   end
 
@@ -236,8 +236,8 @@ class StudentTaskControllerTest < ActionController::TestCase
   def test_valid_oldstudent_student_list
     @request.session[:user] = User.find(users(:student1).id)
     @participant = AssignmentParticipant.find(participants(:par1).id)
-    get :list
-    assert_template :list
+    get :index
+    assert_template :index
     assert_select "title","student_task | list"
   end
 

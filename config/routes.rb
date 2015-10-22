@@ -66,7 +66,7 @@ Expertiza::Application.routes.draw do
 
   resources :content_pages do
     collection do
-      get :list
+      get :index
       get ':page_name', action: :view
     end
   end
@@ -93,7 +93,7 @@ Expertiza::Application.routes.draw do
 
   resources :course_evaluation do
     collection do
-      get :list
+      get :index
     end
   end
 
@@ -142,7 +142,7 @@ Expertiza::Application.routes.draw do
 
   resources :institution do
     collection do
-      get :list
+      get :index
       get :show
       get :new
       post :create
@@ -183,7 +183,7 @@ Expertiza::Application.routes.draw do
       get :move_up
       get :new_for
       get :link
-      get :list
+      get :index
     end
   end
 
@@ -193,7 +193,7 @@ Expertiza::Application.routes.draw do
       post :add
       get :auto_complete_for_user_name
       get :delete_assignment_participant
-      get :list
+      get :index
       get :change_handle
       get :inherit
       get :bequeath_all
@@ -217,7 +217,7 @@ Expertiza::Application.routes.draw do
 
   resources :permissions, constraints: {id: /\d+/} do
     collection do
-      get :list
+      get :index
       get ':id', action: :show
       post ':id', action: :update
       delete ':id', action: :destroy
@@ -246,7 +246,7 @@ Expertiza::Application.routes.draw do
     collection do
       get :copy
       get :edit
-      get :list
+      get :index
       post :list_questionnaires
       get :new_quiz
       post :select_questionnaire_type
@@ -328,7 +328,7 @@ Expertiza::Application.routes.draw do
 
   resources :roles do
     collection do
-      get :list
+      get :index
       post ':id', action: :update
     end
   end
@@ -347,7 +347,7 @@ Expertiza::Application.routes.draw do
       get :add_signup_topics_staggered
       get :delete_signup
       get :edit
-      get :list
+      get :index
       get :signup_topics
       get :signup
       get :sign_up
@@ -370,7 +370,7 @@ Expertiza::Application.routes.draw do
   resources :statistics do
     collection do
       get :list_surveys
-      get :list
+      get :index
       get :view_responses
     end
   end
@@ -388,13 +388,13 @@ Expertiza::Application.routes.draw do
 
   resources :student_review do
     collection do
-      get :list
+      get :index
     end
   end
 
   resources :student_task do
     collection do
-      get :list
+      get :index
       get :view
     end
   end
@@ -427,7 +427,7 @@ Expertiza::Application.routes.draw do
 
   resources :suggestion do
     collection do
-      get :list
+      get :index
       post :submit
       post :student_submit
       post :update_suggestion
@@ -442,7 +442,7 @@ Expertiza::Application.routes.draw do
 
   resources :survey_deployment do
     collection do
-      get :list
+      get :index
       get :delete
       get :reminder_thread
     end
@@ -458,13 +458,13 @@ Expertiza::Application.routes.draw do
 
   resources :system_settings do
     collection do
-      get :list
+      get :index
     end
   end
 
   resources :teams do
     collection do
-      get :list
+      get :index
       #post ':id', action: :create_teams
       post :create_teams
     end
@@ -490,8 +490,8 @@ Expertiza::Application.routes.draw do
 
   resources :users, constraints: {id: /\d+/} do
     collection do
-      get :list
-      post :list
+      get :index
+      post :index
       post ':id', action: :update
       get :show_selection
       get :auto_complete_for_user_name
@@ -508,7 +508,7 @@ Expertiza::Application.routes.draw do
   end
 
   get '/users/show_selection', controller: :users, action: :show_selection
-  get '/users/list', controller: :users, action: :list
+  get '/users/list', controller: :users, action: :index
   get '/menu/*name', controller: :menu_items, action: :link
   get ':page_name', controller: :content_pages, action: :view, method: :get
   get '/submitted_content/submit_hyperlink' => 'submitted_content#submit_hyperlink'
